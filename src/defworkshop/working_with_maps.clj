@@ -57,49 +57,49 @@
   [m]
   (-> m (remove-name) (remove-age)))
 
-(defn ^:not-implemented map-keys
+(defn map-keys
   "Given a map, return only it's keys. You can use `keys` function for that."
   [m]
-  (…))
+  (keys m))
 
-(defn ^:not-implemented map-values
+(defn map-values
   "Given a map, return only it's values. You can use `vals` function for that."
   [m]
-  (…))
+  (vals m))
 
-(defn ^:not-implemented map-select
+(defn map-select
   "Given a map `m` and a vector of keys `ks`, return a map that only contains entries keyed by `ks`. hint: you can use `select-keys`."
   [m ks]
-  (…))
+  (select-keys m ks))
 
-(defn ^:not-implemented map-from-keys-and-vals
+(defn map-from-keys-and-vals
   "Construct a new map from keys and values. Hint: take a look at `zipmap`."
   [keys vals]
-  (…))
+  (zipmap keys vals))
 
-(defn ^:not-implemented kv-for-key
+(defn kv-for-key
   "given a map `m` and a key `k`, return the key-value pair in `m` for `k`. return nil if the `k` isn't present in `m`. Hint: take a look at `find`."
   [m k]
-  (…))
+  (find m k))
 
-(defn ^:not-implemented map-merge
+(defn map-merge
   "given two maps `m1` and `m2`, merge them such that when there's identical keys in both maps, the value in `m1` will prevail in the merged map."
   [m1 m2]
-  (…))
+  (merge-with (fn [a b] a) m1 m2))
 
-(defn ^:not-implemented merge-max
+(defn merge-max
   "given two maps `m1` and `m2` (values are all numbers), merge them such that for identical keys, the larger value prevails. try to leverage `merge-with` in order to achieve this."
   [m1 m2]
-  (…))
+  (merge-with (fn [a b] (if (> a b) a b)) m1 m2))
 
-(defn ^:not-implemented contains-key
+(defn contains-key
   "Check wether the given map `m` contains given key `key`.
 
    You can use `contains` for that."
   [m key]
-  (…))
+  (contains? m key))
 
-(defn ^:not-implemented invert-map
+(defn invert-map
   "given a map, invert the mapping, ie {:a :b, :c :d} should become {:d :c, :b :a}. if the value set contains duplicates, choose any mapping."
   [m]
-  (…))
+  (zipmap (vals m) (keys m)))
