@@ -1,74 +1,76 @@
 (ns defworkshop.working-with-sequences
   (:require [workshoplib.tdd :refer […]]))
 
-(defn ^:not-implemented split-head-and-tail
+(defn split-head-and-tail
   "Split head an tail of sequence by using `first` and `next` functions"
   [list]
-  (…))
+  [(first list) (rest list)])
 
-(defn ^:not-implemented get-nth
+(defn get-nth
   "Now let's write a function that retrieves nth element from the sequence. For that, you can use `nth`"
   [seq n]
-  (…))
+  (nth seq n))
 
-(defn ^:not-implemented conj-to-list
+(defn conj-to-list
   "Conj is an operator that adds element to the list. In case with lists, it
    appends items in a reverse order."
   [list item]
-  (…))
+  (conj list item))
 
-(defn ^:not-implemented conj-to-vector
+(defn conj-to-vector
   "Conj operator with vector appends to tail of vector"
   [vector item]
-  (…))
+  (conj vector item))
 
-(defn ^:not-implemented remove-from-set
+(defn remove-from-set
   "Remove an element from a set using `disj`"
   [s to-remove]
-  (…))
+  (disj s to-remove))
 
-(defn ^:not-implemented rev-concat
+(defn rev-concat
   "given two sequences `s1` and `s2`, concatenate them such that the resulting sequence starts with the last element of `s2` and ends with the first element of `s1`. Hint: there's a function called `reverse` that might be of help."
   [s1 s2]
-  (…))
+  (concat (reverse s2) (reverse s1)))
 
-(defn ^:not-implemented interleave-seqs
+(defn interleave-seqs
   "given two sequences `s1` and `s2`, interleave them, starting with the shorter sequence."
   [s1 s2]
-  (…))
+  (if (> (count s1) (count s2))
+    (interleave s2 s1)
+    (interleave s1 s2)))
 
-(defn ^:not-implemented split-head-and-tail-destructuring
+(defn split-head-and-tail-destructuring
   "Split head and tail of sequence by destructuring the input. Here, instead of `list` (see split-head-and-tail above), use [[head & tail]] which will assign the first element to `head` and
    the rest of sequence (denoted by &) to the tail."
-  [list]
-  (…))
+  [[head & tail]]
+  [head tail])
 
-(defn ^:not-implemented contains-index
+(defn contains-index
   "`contains` is a somewhat confusing function. Usually people expect (contains? [1 2 3] 3) to return
    true, but it returns false, since it checks wether the sequence contains element with `key` (index, in
    case with vectors."
   [coll index]
-  (…))
+  (contains? coll index))
 
-(defn ^:not-implemented real-contains
+(defn real-contains
   "But if you use `some` instead of `contains` it will produce a desirable result. Let's implement a real
    contains with `some` and equality predicate"
   [coll item]
-  (…))
+  (some #(= % item) coll))
 
-(defn ^:not-implemented double-all
+(defn double-all
   "Double each item in sequence by using `map`."
   [l]
-  (…))
+  (map #(* % 2) l))
 
-(defn ^:not-implemented add-5-to-all
+(defn add-5-to-all
   "Add 5 to each item in an array by using `map` and an anonymous function"
   [l]
-  (…))
+  (map #(+ % 5) l))
 
-(defn ^:not-implemented add-5-to-all-with-for
+(defn add-5-to-all-with-for
   [l]
-  (…))
+  (for [x l] (+ x 5)))
 
 (defn ^:not-implemented print-combinations
   "given two sequences `s1` and `s2`, print each combination of their elements where the elements aren't equal as a vector."
