@@ -5,12 +5,12 @@
 ;; Maps
 ;;
 
-(defn ^:not-implemented get-name-or-empty
+(defn get-name-or-empty
   "Write a function that would retrieve a :name from map or return `:empty` token otherwise"
   [m]
-  (…))
+  (get m :name :empty))
 
-(defn ^:not-implemented retrieve-city
+(defn retrieve-city
   "Given hash with following structure:
 
       {:name \"Alex\"
@@ -18,44 +18,44 @@
 
    Retrieve :city from the hash"
   [m]
-  (…))
+  (get-in m [:address :city]))
 
-(defn ^:not-implemented get-by-path
+(defn get-by-path
   "Given a map of {:person {:name {:first-name \"Alex\" }}} return the `:first-name` key value.
 
    You can use `get-in` for that"
   [m]
-  (…))
+  (get-in m [:person :name :first-name]))
 
-(defn ^:not-implemented add-name
+(defn add-name
   "Write a function that adds :name to the map by using `assoc`"
   [m name]
-  (…))
+  (assoc m :name name))
 
-(defn ^:not-implemented add-age
+(defn add-age
   "Write a function that adds :age to the map by using `assoc`"
   [m age]
-  (…))
+  (assoc m :age age))
 
-(defn ^:not-implemented add-name-and-age
+(defn add-name-and-age
   "Use threading `->`, `add-name` and `add-age` functions to compose a new record that has both :name and :age"
   [m name age]
-  (…))
+  (-> m (add-name name) (add-age age)))
 
-(defn ^:not-implemented remove-name
+(defn remove-name
   "Remove :name key from map by using `dissoc`"
   [m]
-  (…))
+  (dissoc m :name))
 
-(defn ^:not-implemented remove-age
+(defn remove-age
   "Remove :age key from map by using `dissoc`"
   [m]
-  (…))
+  (dissoc m :age))
 
-(defn ^:not-implemented remove-name-and-age
+(defn remove-name-and-age
   "Use threading `->`, `remove-name` and `remove-age` functions to compose a new record without :name and :age"
   [m]
-  (…))
+  (-> m (remove-name) (remove-age)))
 
 (defn ^:not-implemented map-keys
   "Given a map, return only it's keys. You can use `keys` function for that."
